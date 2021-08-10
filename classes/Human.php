@@ -20,7 +20,8 @@ class Human
   {
     $this->hitPoint -= $damage;
     // HPが0未満にならないための処理
-    if($this->hitPoint < 0) {
+    if($this->hitPoint < 0)
+    {
       $this->hitPoint = 0;
     }
   }

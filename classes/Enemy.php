@@ -14,4 +14,14 @@ class Enemy
     echo "【" . $human->name . "】に" . $this->attackPoint . "のダメージ！ \n";
     $human->tookDamage($this->attackPoint);
   }
+
+  public function tookDamage($damage)
+  {
+    $this->hitPoint -= $damage;
+    // HPが0未満にならないための処理
+    if($this->hitPoint < 0)
+    {
+      $this->hitPoint = 0;
+    }
+  }
 }
