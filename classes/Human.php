@@ -16,8 +16,8 @@ class Human
 
   public function doAttack($enemy)
   {
-    echo "『".$this->name."』の攻撃！\n";
-    echo "【". $enemy->name ."】に" . $this->attackPoint . " のダメージ！ \n";
+    echo "『".$this->getName() ."』の攻撃！\n";
+    echo "【". $enemy->getName() ."】に" . $this->attackPoint . " のダメージ！ \n";
     $enemy->tookDamage($this->attackPoint);
   }
 
