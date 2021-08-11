@@ -3,9 +3,9 @@
 class Enemy
 {
   const MAX_HP = 50; //最大HPの定義 定数
-  public $name; //敵の名前
-  public $hitPoint = 50; // 現在のHP
-  public $attackPoint = 10; // 攻撃力
+  private $name; //敵の名前
+  private $hitPoint = 50; // 現在のHP
+  private $attackPoint = 10; // 攻撃力
 
   // メソッド
   public function doAttack($human)
