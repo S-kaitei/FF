@@ -3,9 +3,10 @@
 // ファイルのロード
 require_once('./classes/Human.php');
 require_once('./classes/Enemy.php');
+require_once('./classes/Brave.php');
 
 // インスタンス化
-$tidus = new Human();
+$tidus = new Brave();
 $goblin = new Enemy();
 
 $tidus->name = "ティーダ";
