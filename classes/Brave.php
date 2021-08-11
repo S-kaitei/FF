@@ -6,6 +6,11 @@ class Brave extends Human
   private $hitPoint = self::MAX_HP;
   private $attackPoint = 30;
 
+  public function __construct($name)
+  {
+    parent::__construct($name, $this->hitPoint, $this->attackPoint);
+  }
+
   public function doAttack($enemy)
   {
     // 乱数の発生
