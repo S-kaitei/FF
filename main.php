@@ -6,11 +6,8 @@ require_once('./classes/Enemy.php');
 require_once('./classes/Brave.php');
 
 // インスタンス化
-$tidus = new Brave();
-$goblin = new Enemy();
-
-$tidus->name = "ティーダ";
-$goblin->name = "ゴブリン";
+$tidus = new Brave("ティーダ");
+$goblin = new Enemy("ゴブリン");
 
 $turn = 1;
 
