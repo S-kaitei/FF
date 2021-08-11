@@ -36,11 +36,6 @@ class Human
     return $this->name;
   }
 
-  public function setName($name)
-  {
-    $this->name = $name;
-  }
-
   public function getHitPoint()
   {
     return $this->hitPoint;

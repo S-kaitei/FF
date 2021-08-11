@@ -8,6 +8,26 @@ class Enemy
   private $attackPoint = 10; // 攻撃力
 
   // メソッド
+  public function __construct($name)
+  {
+    $this->name = $name;
+  }
+
+  public function getName()
+  {
+    return $this->name;
+  }
+
+  public function getHitPoint()
+  {
+    return $this->hitPoint;
+  }
+
+  public function getAttackPoint()
+  {
+    return $this->attackPoint;
+  }
+
   public function doAttack($human)
   {
     echo "『". $this->name ."』の攻撃！ \n";
