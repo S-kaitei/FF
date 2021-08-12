@@ -31,6 +31,14 @@ class Human
     }
   }
 
+  public function recoveryDamage($heal, $target)
+  {
+    $this->hitPoint += $heal;
+    if($this->hitPoint > $target::MAX_HP){
+      $this->hitPoint = $target::MAX_HP;
+    }
+  }
+
   public function getName()
   {
     return $this->name;
