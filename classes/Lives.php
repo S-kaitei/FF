@@ -52,4 +52,31 @@ class Lives
       $this->hitPoint = $target::MAX_HP;
     }
   }
+
+  // 攻撃ができるかどうかチェック
+  public function isEnableAttack($targets)
+  {
+      // チェック１：自信のHPが0以上かどうか
+      if ($this->hitPoint <= 0) {
+          return false;
+      }
+      // チェック２：敵が全員HP0以下かどうか
+      foreach ($targets as $target) {
+          if ($target->getHitPoint() > 0) {
+              // 0以上のHPがある場合は攻撃可能
+              return true;
+          }
+      }
+  }
+
+  // ターゲットを決めるメソッド
+  public function selectTarget($targets)
+  {
+      $target = $targets[rand(0, count($targets) -1)];
+      // 敵のHPが0以下の場合再度ターゲットを決める
+      while ($target->getHitPoint() <= 0) {
+          $target = $targets[rand(0, count($targets) -1)];
+      }
+      return $target;
+  }
 }
