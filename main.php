@@ -36,25 +36,11 @@ while(!$isFinishFlg)
   // 敵の表示
   $messageObj->displayStatusMessage($enemies);
 
-  // 攻撃
-  foreach($members as $member)
-  {
-    // 白魔道士の場合、味方のオブジェクトも渡す
-    if(get_class($member) == "WhiteMage"){
-      $member->doAttackWhiteMage($enemies, $members);
-    }else{
-      $member->doAttack($enemies);
-    }
-    echo "\n";
-  }
-  echo "\n";
+  // 仲間の攻撃
+  $messageObj->displayAttackMessage($members,$enemies);
 
-  foreach($enemies as $enemy)
-  {
-    $enemy->doAttack($members);
-    echo "\n";
-  }
-  echo "\n";
+  // 敵の攻撃
+  $messageObj->displayAttackMessage($enemies, $members);
 
   // 仲間の全滅チェック
   $deathCny = 0; // HPが0以下の仲間の数
