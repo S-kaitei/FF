@@ -53,6 +53,21 @@ class Lives
     }
   }
 
+  // 攻撃するメソッド
+  public function doAttack($targets)
+  {
+      if (!$this->isEnableAttack($targets)) {
+          return false;
+      }
+      // ターゲットの決定
+      $target = $this->selectTarget($targets);
+
+      echo "『" .$this->name . "』の攻撃！\n";
+      echo "【" . $target->getName() . "】に " . $this->attackPoint . " のダメージ！ \n";
+      $target->tookDamage($this->attackPoint);
+      return true;
+  }
+
   // 攻撃ができるかどうかチェック
   public function isEnableAttack($targets)
   {
