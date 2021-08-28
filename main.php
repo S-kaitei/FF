@@ -25,6 +25,22 @@ $isFinishFlg = false;
 
 $messageObj = new Message;
 
+function isFinish($objects)
+{
+  $deathCnt = 0; // HPが0以下の仲間の数
+  foreach($objects as $object){
+    // 1人でもHPが0を超えていたらfalseを返す
+    if($object->getHitPoint() > 0){
+      return false;
+    }
+    $deathCnt++;
+  }
+  // 仲間の数が死亡数(HPが0以下の数)と同じであればtrueを返す
+  if($deathCnt === count($objects)){
+    return true;
+  }
+}
+
 // どちらかのHPが0になるまで繰り返す
 while(!$isFinishFlg)
 {
@@ -43,35 +59,15 @@ while(!$isFinishFlg)
   $messageObj->displayAttackMessage($enemies, $members);
 
   // 仲間の全滅チェック
-  $deathCny = 0; // HPが0以下の仲間の数
-  foreach($members as $member)
-  {
-    if($member->getHitPoint() > 0){
-      $isFinishFlg = false;
-      break;
-    }
-    $deathCny++;
-  }
-  if($deathCny === count($members))
-  {
-    $isFinishFlg = true;
-    echo "GAME OVER ....\n\n";
+  $isFinishFlg = isFinish($members);
+  if($isFinishFlg){
+    $message = "GAME OVER ....\n\n";
     break;
   }
 
-  // 敵の全滅チェック
-  $deathCnt = 0; // HPが0以下の敵の数
-  foreach($enemies as $enemy)
-  {
-    if($enemy->getHitPoint() > 0){
-      $isFinishFlg = false;
-      break;
-    }
-    $deathCnt++;
-  }
-  if($deathCnt === count($enemies)){
-    $isFinishFlg = true;
-    echo "♪♪♪ファンファーレ♪♪♪\n\n";
+  $isFinishFlg = isFinish($enemies);
+  if($isFinishFlg){
+    $message = "♪♪♪ファンファーレ♪♪♪\n\n";
     break;
   }
 
@@ -79,6 +75,8 @@ while(!$isFinishFlg)
 }
 
 echo "⭐️⭐️⭐️ 戦闘終了 ⭐️⭐️⭐️\n\n";
+
+echo $message;
 
 // 仲間の表示
 $messageObj->displayStatusMessage($members);
