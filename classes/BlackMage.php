@@ -30,7 +30,7 @@ class BlackMage extends Human
       echo $enemy->getName() . "に" . $this->intelligence * 1.5 . "のダメージ！\n";
       $enemy->tookDamage($this->intelligence * 1.5);
     }else{
-      parent::doAttack($enemy);
+      parent::doAttack($enemies);
     }
     return true;
   }
